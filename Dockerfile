@@ -1,6 +1,6 @@
 FROM ubuntu:22.04 AS unzip
 
-RUN apt-get install -y xz-utils bzip2
+RUN apt update && apt install -y xz-utils bzip2
 
 # UNUSED :(
 # COPY qemu-2k1000-static.20240526.tar.xz /
