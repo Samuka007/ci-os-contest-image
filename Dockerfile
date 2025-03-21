@@ -99,9 +99,8 @@ RUN rm -rf /var/lib/apt/lists/*
 # <== ENV
 
 # ==> RUST
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-RUN echo 'source $HOME/.cargo/env' >> $HOME/.bashrc
-ENV PATH="$HOME/.cargo/bin:${PATH}"
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
+ENV PATH="/root/.cargo/bin:${PATH}"
 
 RUN rustup install nightly-2025-01-18
 RUN rustup install nightly-2024-02-03
