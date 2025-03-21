@@ -100,7 +100,7 @@ RUN rm -rf /var/lib/apt/lists/*
 
 # ==> RUST
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
-ENV PATH="/root/.cargo/bin:${PATH}"
+ENV PATH=/root/.cargo/bin:$PATH
 
 RUN rustup install nightly-2025-01-18
 RUN rustup install nightly-2024-02-03
@@ -129,6 +129,7 @@ RUN cargo +nightly-2025-01-18 install cargo-binutils
 # !!! NOTICE MODIFIED !!! COPY kendryte-toolchain /opt/kendryte-toolchain
 COPY --from=unzip /opt/kendryte-toolchain /opt/kendryte-toolchain
 ENV LD_LIBRARY_PATH=/opt/kendryte-toolchain/bin/:$LD_LIBRARY_PATH
+ENV PATH=/opt/kendryte-toolchain/bin:$PATH
 
 # !!! NOTICE NOT INCLUDED !!!
 # COPY --from=unzip /opt/toolchain-loongarch64-linux-gnu-gcc8-host-x86_64-2022-07-18 /opt/toolchain-loongarch64-linux-gnu-gcc8-host-x86_64-2022-07-18
