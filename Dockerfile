@@ -35,7 +35,7 @@ RUN cd /opt/ && tar xavf /loongarch64-linux-musl-cross.tgz
 # USED !
 # COPY riscv64-linux-musl-cross.tgz /
 ADD https://musl.cc/riscv64-linux-musl-cross.tgz /
-# RUN cd /opt/ && tar xavf /riscv64-linux-musl-cross.tgz
+RUN cd /opt/ && tar xavf /riscv64-linux-musl-cross.tgz
 
 # USED !
 # COPY kendryte-toolchain.tar.gz /
@@ -128,7 +128,7 @@ RUN cargo +nightly-2025-01-18 install cargo-binutils
 
 # ==> COPYING
 # !!! NOTICE MODIFIED !!! COPY kendryte-toolchain /opt/kendryte-toolchain
-COPY --from=unzip /opt/kendryte-toolchain-ubuntu-amd64-8.2.0-20190213 /opt/kendryte-toolchain
+COPY --from=unzip /opt/kendryte-toolchain /opt/kendryte-toolchain
 ENV LD_LIBRARY_PATH=/opt/kendryte-toolchain/bin/:$LD_LIBRARY_PATH
 
 # !!! NOTICE NOT INCLUDED !!!
